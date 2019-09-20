@@ -34,18 +34,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     //inf o conteúdo dessas linhas, no caso inf as celulas
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TableViewCell
-      
         let viagemAtual = listasViagens[indexPath.row]
-        
-        cell.labelTitulo.text = viagemAtual.titulo
-        cell.labelQuantidadeDias.text = "\(viagemAtual.quantidadeDeDias) dias"
-        cell.labelPreco.text = "R$ \(viagemAtual.preco)"
-        cell.imagemViagem.image = UIImage(named: viagemAtual.caminhoDaImagem)
-        
-        cell.imagemViagem.layer.cornerRadius = 10
-        cell.imagemViagem.layer.masksToBounds = true //mascara de corte com o raio q colocamos
-        
-        //cell.textLabel?.text = viagemAtual.titulo //mostra os text do array qnd o metodo passar
+        cell.configuraCelula(viagem: viagemAtual)
         
         return cell
     }
